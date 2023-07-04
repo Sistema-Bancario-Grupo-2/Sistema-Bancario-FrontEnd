@@ -39,9 +39,10 @@ export const NavBarInicio = () => {
                                     <div className="vr d-none d-lg-flex h-100 mx-lg-2 text-black"></div>
                                     <hr className="d-lg-none text-black-50" />
                                 </li>
-                                <NavLink to='login' className="btn bg-primary text-light">
+
+                                <Link className="btn bg-primary text-light" to='lg'>
                                     Login
-                                </NavLink>
+                                </Link>
 
                                 {/* <NavLink className={ ({ isActive}) => `nav-link ${ isActive ? 'active' : ''}` }
                                     to='login'>

@@ -13,6 +13,10 @@ body {
     color: var(--primary);
 }
 
+#sidebard a.active {
+    color: white !important; 
+}
+
 a {
     text-decoration: none;
 }
@@ -51,4 +55,8 @@ a:hover {
 
 .carousel-inner {
     max-height: 45rem;
+}
+
+#sidebar a.active {
+    color: #ffffff;
 }

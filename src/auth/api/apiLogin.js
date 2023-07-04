@@ -1,19 +1,18 @@
 import axios from "axios";
 import Swal from "sweetalert2";
-const URL = `http://localhost:8080/banco/`;
+
+const URL = `http://localhost:8080/banco/auth/`;
 
 export const apiLogin = async (correo, password) => {
     try {
-      const response = await axios.post(`${URL}auth/login`, {
+      const response = await axios.post(`${URL}login`, {
         correo,
         password,
       });
   
       const token = response.data.token;
       // Guardar el token en el localStorage
-      if (token) {
-        localStorage.setItem("token", token);
-      }
+      token ? localStorage.setItem("token", token) : null;
   
       if (response) {
         Swal.fire({
@@ -24,7 +23,7 @@ export const apiLogin = async (correo, password) => {
         });
       }
   
-      return token;
+      return response;
     } catch ({ response: { data: { msg } } }) {
       Swal.fire({
         icon: "error",

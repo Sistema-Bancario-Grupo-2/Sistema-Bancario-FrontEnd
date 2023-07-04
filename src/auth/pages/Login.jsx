@@ -1,28 +1,46 @@
 import { Fragment } from "react"
-import { useState } from "react"
-import '../../styles/Login.css';
-import '../../styles/Nav.css';
-import hotelLogo from '../../assets/img/logo1-1.png';
-
+import { useContext } from "react"
+import { useForm } from '../../hooks/useForm';
+import { AuthContext } from '../context/AuthContext';
 import { apiLogin } from '../api/apiLogin.js';
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import { NotFound404 } from "../../pages/NotFound404";
+
+import hotelLogo from '../../assets/img/logo1-1.png';
+import '../../styles/Login.css';
+import '../../styles/Nav.css';
 
 export const Login = () => {
 
-    //Manejo de la informacion que se ingresa atravez de los imputs
-    const [correo, setCorreo] = useState('');
-    const [password, setPassword] = useState('');
+    //Se trasladan los datos y hacemos use del onImputChange para obtenerlos
+    const { correo, password, onInputChange, onResetForm } = useForm({
+        correo: '',
+        password: ''
+    });
 
+    const { login } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const resultado = await apiLogin(correo, password);
-        if (resultado === false) return null;
+    //Manejo de la informacion que se ingresa atravez de los imputs
+    // const [correo, setCorreo] = useState('');
+    // const [password, setPassword] = useState('');
 
-        navigate('/User')
-    }
+    const handleSubmit = async (event) => {
+
+        event.preventDefault();
+
+        const result = await apiLogin(correo, password);
+
+        if (result === false) return null;
+    
+        const lastPath = localStorage.getItem('lastPath') || '/';
+        login(result.data.user, result.data.rol);
+
+        navigate(lastPath, {
+          replace: true
+        })
+        
+        onResetForm();
+      }
 
     return (
         <Fragment>
@@ -41,24 +59,24 @@ export const Login = () => {
 
                         {/* Login */}
                         <form onSubmit={handleSubmit}>
-                        <div className="mb-4">
-                                <label for="email" className="form-label">Correo</label>
-                                <input 
-                                    type="email" 
-                                    className="form-control" 
-                                    name="correo" 
+                            <div className="mb-4">
+                                <label htmlFor="email" className="form-label">Correo</label>
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    name="correo"
                                     value={correo}
-                                    onChange={(e) => setCorreo(e.target.value)}
+                                    onChange={onInputChange}
                                 />
                             </div>
                             <div className="mb-4">
-                                <label for="email" className="form-label">Password</label>
-                                <input 
-                                    type="password" 
-                                    className="form-control" 
+                                <label htmlFor="email" className="form-label">Password</label>
+                                <input
+                                    type="password"
+                                    className="form-control"
                                     name="password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)} 
+                                    onChange={onInputChange}
                                 />
                             </div>
 
@@ -68,7 +86,7 @@ export const Login = () => {
                             </div>
 
                             <div className="my-3">
-                                
+
                                 <br />
                                 <br />
                                 <br />
