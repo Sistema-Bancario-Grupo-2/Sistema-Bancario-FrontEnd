@@ -9,13 +9,11 @@ export const Description = () => {
         <h1 className="p-3 fs-2 border-top border-3">
           Pide en línea en la mejor pizzeria del
           <span className="fw-bold text-blue"> Mundo</span>
-        </h1>
+        </h1> 
 
         <p className="p-3 fs-4">
           <span className="fw-bold text-blue"> Banca el Linea </span>
-          encuentras pizzas de especialidades, pizzas Prémium,
-          combos y Promociones, todo esto para satisfacer tus
-          necesidades y cumplir con tus expectativas.
+          es una institución financiera líder que ha estado sirviendo a nuestros clientes con excelencia y compromiso durante muchos años. En esta presentación, destacaremos los principales aspectos que nos diferencian y nos convierten en una opción confiable y innovadora en el mundo de los servicios financieros.
         </p>
       </div>
 

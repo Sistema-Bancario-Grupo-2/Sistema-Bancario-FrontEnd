@@ -1,0 +1,28 @@
+body{
+    background-image: url("../assets/img/Fondo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover, auto;
+}
+
+.logoNav{
+    margin-left: 3%;
+}
+
+.table{
+    margin-top: 3%;
+    text-align: center;
+}
+
+.titulo{
+    display: block;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 2%;
+}
+
+.botones{
+    margin-top: 10px;
+    margin-right: 5px;
+}

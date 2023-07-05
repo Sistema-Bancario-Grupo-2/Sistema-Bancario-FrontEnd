@@ -50,5 +50,12 @@ a:hover {
 }
 
 .carousel-inner {
-    max-height: 45rem;
+    max-height: 100%;
+}
+
+.fotop {
+    display: block;
+    margin: 2%;
+    width: 100%;
+    height: 100%;
 }
