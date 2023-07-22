@@ -11,6 +11,11 @@ body {
     font-family: 'Quicksand', sans-serif;
     font-weight: 300;
     color: var(--primary);
+    background-image: url("../assets/img/Fondo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover, auto;
 }
 
 #sidebard a.active {
@@ -59,4 +64,11 @@ a:hover {
 
 #sidebar a.active {
     color: #ffffff;
+}
+
+#tituloNav{
+    font-size: 5; 
+    font-weight: bold; 
+    color: white;
+    margin-right: 30px;
 }

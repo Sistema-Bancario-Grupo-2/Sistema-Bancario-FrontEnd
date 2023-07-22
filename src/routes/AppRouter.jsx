@@ -28,9 +28,6 @@ export const AppRouter = () => {
             <BancoRoutes />
           </PrivateRoute>
         } />
-
-        {/* <Route path="/lg/*" element={<Login />} /> */}
-
       </Routes>
 
     </Fragment>

@@ -31,10 +31,10 @@ export const Login = () => {
         const result = await apiLogin(correo, password);
 
         if (result === false) return null;
-    
+        // console.log(result.data)
         const lastPath = localStorage.getItem('lastPath') || '/';
-        login(result.data.user, result.data.rol);
-
+        login(result.data.user, result.data.rol, result.data.celular, result.data.direccion, result.data.dpi,result.data.ingresos_mensuales, result.data.correo );
+        
         navigate(lastPath, {
           replace: true
         })

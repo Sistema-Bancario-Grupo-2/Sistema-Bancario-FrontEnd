@@ -1,0 +1,42 @@
+/* perfil de cuenta */
+.card{
+    margin-top: 5%;
+}
+
+.redes a{
+    display: inline;
+    padding: 7%;
+}
+
+/*estilos para tablas */
+
+.logoNav{
+    margin-left: 3%;
+}
+
+.table{
+    margin-top: 3%;
+    text-align: center;
+}
+
+.titulo{
+    display: block;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.botones{
+    text-align: center;
+    margin: 5px;
+}
+
+.alinear-botones{
+    text-align: right;
+}
+
+.botones-cuenta{
+    margin-top: 5px;
+    margin-right: 5px;
+}

@@ -2,6 +2,7 @@ import { Fragment } from "react"
 import { useContext } from "react"
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from '../../auth/context/AuthContext';
+import Logo from '../../assets/img/logo1-1.png';
 import '../../styles/Nav.css';
 
 export const NavBar = () => {
@@ -9,6 +10,10 @@ export const NavBar = () => {
     //Custom hook para navegar
     const navigate = useNavigate();
     const { user, logout } = useContext(AuthContext);
+
+    const userProfile = (user) => {
+        navigate("/perfilUsuario", { state: { user } })
+    }
     //console.log(user);
 
     const onLogOut = () => {
@@ -35,6 +40,10 @@ export const NavBar = () => {
                             <span className="navbar-toggler-icon"></span>
                         </button>
 
+                        <img src={Logo} alt="" width="45" height="50" className="navbar-brand  d-inline-block align-text-top" />
+
+                        <span id="tituloNav"> Banca en Línea</span>
+
 
                         {/* <NavLink
                         className={({ isActive }) => `nav-link ${isActive ? `active` : ``}`}
@@ -46,17 +55,94 @@ export const NavBar = () => {
 
                         <div className="me-3">
                             <NavLink
-                                to='/cuenta'
+                                to='/perfilUsuario'
                                 style={({ isActive, isPending }) => {
                                     return {
                                         fontWeight: isActive ? "normal" : "",
                                         color: isPending ? 'white' : "white",
                                     };
                                 }}
+                                onClick={() => userProfile(user)}
                             >
-                                Cuenta
+                                Perfil
                             </NavLink>
                         </div>
+
+                        <div className="me-2">
+
+                            {
+
+                                (rol === 'ADMIN_ROLE')
+
+                                    ? <NavLink
+
+                                        to='/adminCuentas'
+
+                                        style={({ isActive, isPending }) => {
+
+                                            return {
+
+                                                fontWeight: isActive ? "normal" : "",
+
+                                                color: isPending ? 'white' : "white",
+
+                                            };
+
+                                        }}
+
+                                    >
+
+                                        Cuentas
+
+                                    </NavLink>
+
+                                    :
+
+                                    ""
+
+                            }
+
+                        </div>
+
+
+
+
+                        <div className="me-2">
+
+                            {
+
+                                (rol === 'ADMIN_ROLE')
+
+                                    ? <NavLink
+
+                                        to='/adminPages'
+
+                                        style={({ isActive, isPending }) => {
+
+                                            return {
+
+                                                fontWeight: isActive ? "normal" : "",
+
+                                                color: isPending ? 'white' : "white",
+
+                                            };
+
+                                        }}
+
+                                    >
+
+                                        Usuarios
+
+                                    </NavLink>
+
+                                    :
+
+                                    ""
+
+                            }
+
+                        </div>
+
 
                         <div className="me-3">
                             <NavLink
@@ -86,24 +172,7 @@ export const NavBar = () => {
                             </NavLink>
                         </div>
 
-                        <div className="me-3">
-                            {
-                                (rol === 'ADMIN_ROLE')
-                                    ? <NavLink
-                                        to='/admin'
-                                        style={({ isActive, isPending }) => {
-                                            return {
-                                                fontWeight: isActive ? "normal" : "",
-                                                color: isPending ? 'white' : "white",
-                                            };
-                                        }}
-                                    >
-                                        Admin
-                                    </NavLink>
-                                    :
-                                    ""
-                            }
-                        </div>
+                        
 
                         <div className="me-3">
                             {
@@ -132,20 +201,17 @@ export const NavBar = () => {
                                         {user?.name}
                                     </a>
                                     <ul className="dropdown-menu">
-                                        <li>
-                                            <NavLink
-                                                to='/perfil'
-                                                style={({ isActive, isPending }) => {
-                                                    return {
-                                                        fontWeight: isActive ? "normal" : "",
-                                                        color: isPending ? 'black' : "black",
-                                                    };
-                                                }}
-                                            >   <span className="text-light">--*</span>
-                                                Perfil
-                                            </NavLink>
-                                        </li>
-                                        <li><a className="dropdown-item" href="#">Acciones</a></li>
+                                        <li><NavLink
+                                            to="/crear"
+                                            style={({ isActive, isPending }) => {
+                                                return {
+                                                    fontWeight: isActive ? "normal" : "",
+                                                    color: isPending ? 'white' : "white",
+                                                };
+                                            }}
+                                        >
+                                            Crear Usuario
+                                        </NavLink></li>
                                         <li><hr className="dropdown-divider" /></li>
                                         <li>
                                             <a className="dropdown-item"
